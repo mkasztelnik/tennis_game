@@ -10,7 +10,9 @@ class Tennis::Gem
     elsif eq?
       "#{@player_one.score} all"
     elsif end?
-      "#{winner.name} wins"
+      "#{winner} wins"
+    elsif advantage?
+      "Advantage #{winner}"
     else
       "#{@player_one.score}, #{@player_two.score}"
     end
@@ -38,6 +40,10 @@ class Tennis::Gem
     points_diff.abs > 1 && winner.points > 3
   end
 
+  def advantage?
+    points_diff.abs == 1 && winner.points > 3
+  end
+
   def winner
     points_diff > 0 ? @player_one : @player_two
   end
@@ -47,7 +53,7 @@ class Tennis::Gem
   end
 
   class Player
-    attr_reader :points, :name
+    attr_reader :points
 
     def initialize(name)
       @points = 0
@@ -65,6 +71,10 @@ class Tennis::Gem
       when 2 then 'Thirty'
       when 3 then 'Forty'
       end
+    end
+
+    def to_s
+      @name
     end
   end
 end
