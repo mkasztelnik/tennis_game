@@ -73,6 +73,12 @@ describe Tennis::Gem do
     expect(subject.score).to eq 'Deuce'
   end
 
+  it 'second user wins after deuce' do
+    score(3, 5)
+
+    expect(subject.score).to eq 'Bar wins'
+  end
+
   def score(player_one_points, player_two_points)
     player_one_points.times { subject.player_one_scores! }
     player_two_points.times { subject.player_two_scores! }
