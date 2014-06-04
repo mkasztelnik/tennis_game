@@ -1,12 +1,16 @@
 class Tennis::Gem
-  def initialize
-    @player_one = Player.new
-    @player_two = Player.new
+  def initialize(player_one_name, player_two_name)
+    @player_one = Player.new(player_one_name)
+    @player_two = Player.new(player_two_name)
   end
 
   def score
-    if eq?
+    if deuce?
+      'Deuce'
+    elsif eq?
       "#{@player_one.score} all"
+    elsif end?
+      "#{winner.name} wins"
     else
       "#{@player_one.score}, #{@player_two.score}"
     end
@@ -22,15 +26,32 @@ class Tennis::Gem
 
   private
 
+  def deuce?
+    @player_one.points == 3 && eq?
+  end
+
   def eq?
     @player_one.points == @player_two.points
   end
 
-  class Player
-    attr_reader :points
+  def end?
+    points_diff.abs > 1 && winner.points > 3
+  end
 
-    def initialize
+  def winner
+    points_diff > 0 ? @player_one : @player_two
+  end
+
+  def points_diff
+    @player_one.points - @player_two.points
+  end
+
+  class Player
+    attr_reader :points, :name
+
+    def initialize(name)
       @points = 0
+      @name = name
     end
 
     def score!

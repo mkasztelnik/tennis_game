@@ -1,6 +1,8 @@
 require 'tennis_game'
 
 describe Tennis::Gem do
+  subject { Tennis::Gem.new('Foo', 'Bar') }
+
   it 'starts from "Love all"' do
     expect(subject.score).to eq 'Love all'
   end
@@ -39,6 +41,18 @@ describe Tennis::Gem do
     score(3, 3)
 
     expect(subject.score).to eq 'Deuce'
+  end
+
+  it 'first user wins' do
+    score(4, 0)
+
+    expect(subject.score).to eq 'Foo wins'
+  end
+
+  it 'second user wins' do
+    score(2, 4)
+
+    expect(subject.score).to eq 'Bar wins'
   end
 
   def score(player_one_points, player_two_points)
