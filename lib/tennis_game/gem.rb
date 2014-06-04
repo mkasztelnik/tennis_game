@@ -29,7 +29,7 @@ class Tennis::Gem
   private
 
   def deuce?
-    @player_one.points == 3 && eq?
+    @player_one.points > 2 && eq?
   end
 
   def eq?
