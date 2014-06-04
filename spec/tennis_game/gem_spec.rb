@@ -7,14 +7,27 @@ describe Tennis::Gem do
   end
 
   it 'scores "Fifteen, Love" when first user wins first ball' do
-    subject.player_one_scores
+    subject.player_one_scores!
 
     expect(subject.score).to eq 'Fifteen, Love'
   end
 
   it 'scores "Love, Fifteen" when second user wins first ball' do
-    subject.player_two_scores
+    subject.player_two_scores!
 
     expect(subject.score).to eq 'Love, Fifteen'
+  end
+
+  it 'scores "Fifteen all" when 1:1' do
+    subject.player_one_scores!
+    subject.player_two_scores!
+
+    expect(subject.score).to eq 'Fifteen all'
+  end
+
+  it 'scores "Thirty, Love" when 2:0' do
+    2.times { subject.player_one_scores! }
+
+    expect(subject.score).to eq 'Thirty, Love'
   end
 end

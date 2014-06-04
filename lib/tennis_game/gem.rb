@@ -6,17 +6,17 @@ class Tennis::Gem
 
   def score
     if eq?
-      'Love all'
+      "#{@player_one.score} all"
     else
       "#{@player_one.score}, #{@player_two.score}"
     end
   end
 
-  def player_one_scores
+  def player_one_scores!
     @player_one.score!
   end
 
-  def player_two_scores
+  def player_two_scores!
     @player_two.score!
   end
 
@@ -41,6 +41,7 @@ class Tennis::Gem
       case @points
       when 0 then 'Love'
       when 1 then 'Fifteen'
+      when 2 then 'Thirty'
       end
     end
   end
