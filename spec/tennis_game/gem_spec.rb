@@ -30,4 +30,10 @@ describe Tennis::Gem do
 
     expect(subject.score).to eq 'Thirty, Love'
   end
+
+  it 'scores "Love, Forty" when 0:3' do
+    3.times { subject.player_two_scores! }
+
+    expect(subject.score).to eq 'Love, Forty'
+  end
 end

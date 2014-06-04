@@ -42,6 +42,7 @@ class Tennis::Gem
       when 0 then 'Love'
       when 1 then 'Fifteen'
       when 2 then 'Thirty'
+      when 3 then 'Forty'
       end
     end
   end
