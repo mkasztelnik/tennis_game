@@ -1,5 +1,5 @@
-require "tennis_game/version"
+require 'tennis_game/version'
 
-module TennisGame
-  # Your code goes here...
+module Tennis
+  autoload :Gem, 'tennis_game/gem'
 end
